@@ -7,6 +7,10 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-green-600: oklch(62.7% 0.194 149.214);
+    --color-blue-600: oklch(54.6% 0.245 262.881);
+    --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-slate-100: oklch(96.8% 0.007 247.896);
     --color-slate-200: oklch(92.9% 0.013 255.508);
     --color-slate-300: oklch(86.9% 0.022 252.894);
@@ -15,6 +19,8 @@
     --color-slate-700: oklch(37.2% 0.044 257.287);
     --color-slate-800: oklch(27.9% 0.041 260.031);
     --color-slate-900: oklch(20.8% 0.042 265.755);
+    --color-gray-700: oklch(37.3% 0.034 259.733);
+    --color-gray-900: oklch(21% 0.034 264.665);
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-md: 28rem;
@@ -29,12 +35,15 @@
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
+    --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --tracking-tight: -0.025em;
     --leading-tight: 1.25;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -116,6 +125,7 @@
   }
   img, svg, video, canvas, audio, iframe, embed, object {
     display: block;
+    vertical-align: middle;
   }
   img, video {
     max-width: 100%;
@@ -190,11 +200,8 @@
   .mx-auto {
     margin-inline: auto;
   }
-  .mt-2 {
-    margin-top: calc(var(--spacing) * 2);
-  }
-  .mt-auto {
-    margin-top: auto;
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
   }
   .mb-4 {
     margin-bottom: calc(var(--spacing) * 4);
@@ -202,11 +209,17 @@
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
   }
+  .ml-2 {
+    margin-left: calc(var(--spacing) * 2);
+  }
   .flex {
     display: flex;
   }
   .grid {
     display: grid;
+  }
+  .hidden {
+    display: none;
   }
   .h-40 {
     height: calc(var(--spacing) * 40);
@@ -219,9 +232,6 @@
   }
   .max-w-6xl {
     max-width: var(--container-6xl);
-  }
-  .flex-1 {
-    flex: 1;
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -247,6 +257,9 @@
   .overflow-hidden {
     overflow: hidden;
   }
+  .rounded {
+    border-radius: 0.25rem;
+  }
   .rounded-lg {
     border-radius: var(--radius-lg);
   }
@@ -257,11 +270,11 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .border-slate-100 {
-    border-color: var(--color-slate-100);
-  }
   .border-slate-200 {
     border-color: var(--color-slate-200);
+  }
+  .bg-blue-600 {
+    background-color: var(--color-blue-600);
   }
   .bg-slate-100 {
     background-color: var(--color-slate-100);
@@ -290,6 +303,9 @@
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -308,21 +324,17 @@
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
-  .text-xl {
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
-  }
   .text-xs {
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
-  .leading-tight {
-    --tw-leading: var(--leading-tight);
-    line-height: var(--leading-tight);
-  }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
   }
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
@@ -332,23 +344,26 @@
     --tw-tracking: var(--tracking-tight);
     letter-spacing: var(--tracking-tight);
   }
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
+  .text-gray-900 {
+    color: var(--color-gray-900);
+  }
+  .text-green-600 {
+    color: var(--color-green-600);
+  }
+  .text-red-500 {
+    color: var(--color-red-500);
+  }
   .text-slate-200 {
     color: var(--color-slate-200);
   }
   .text-slate-300 {
     color: var(--color-slate-300);
   }
-  .text-slate-500 {
-    color: var(--color-slate-500);
-  }
-  .text-slate-700 {
-    color: var(--color-slate-700);
-  }
   .text-slate-800 {
     color: var(--color-slate-800);
-  }
-  .text-slate-900 {
-    color: var(--color-slate-900);
   }
   .text-white {
     color: var(--color-white);
@@ -356,6 +371,18 @@
   .shadow-sm {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .transition {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .hover\:bg-blue-700 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-700);
+      }
+    }
   }
   .hover\:bg-slate-800 {
     &:hover {
@@ -421,10 +448,6 @@
   syntax: "*";
   inherits: false;
   initial-value: solid;
-}
-@property --tw-leading {
-  syntax: "*";
-  inherits: false;
 }
 @property --tw-font-weight {
   syntax: "*";
@@ -503,7 +526,6 @@
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
-      --tw-leading: initial;
       --tw-font-weight: initial;
       --tw-tracking: initial;
       --tw-shadow: 0 0 #0000;
